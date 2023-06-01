@@ -14,7 +14,11 @@ code {
     monospace;
 }
 
-header{
+header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 30px;
   padding: 20px 30px;
   margin-bottom: 20px;
   border-bottom: 2px solid rgb(148, 147, 147);

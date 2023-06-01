@@ -5,19 +5,17 @@ import { Link } from 'react-router-dom';
 const HomePage = () => {
   const [trends, setTrends] = useState([]);
 
+
   useEffect(() => {
     async function fetch() {
       try {
-        
         const { results } = await fetchTrendMovies();
 
         const filteredResults = results.map(({ title, id }) => {
           return { title, id };
         });
         setTrends(filteredResults);
-        
       } catch (err) {
-        
         console.log(err);
       } finally {
         //   setLoading(false);
@@ -27,14 +25,17 @@ const HomePage = () => {
     fetch();
   }, []);
 
+
   return (
     <div>
       <h2>Trending Today</h2>
       <ul>
         {trends?.map(el => (
-          <Link key={el.id} to='movies'>
-            <li>{el.title}</li>
-          </Link>
+          <li key={el.id} >
+            <Link to={`/movies/${el.id}`} >
+              {el.title}
+            </Link>
+          </li>
         ))}
       </ul>
     </div>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchCast } from 'components/services/fetch';
+import { CastBlock, CastImg, CastData } from './Cast.styled';
 
 const Cast = () => {
   const [cast, setCast] = useState([]);
@@ -32,20 +33,19 @@ const Cast = () => {
     <>
       <ul>
         {cast?.map(el => (
-          <li key={el.id}>
+          <CastBlock key={el.id}>
             <div>
-              <img
-                src={
+              <CastImg src={
                   el.profile_path
                     ? `https://image.tmdb.org/t/p/w200/${el.profile_path}`
                     : defaultImg
                 }
                 alt={el.name}
-              ></img>
-              <p>Actor: {el.name}</p>
-              <p>Character: {el.character}</p>
+              />
+              <CastData>{el.name}</CastData>
+              <CastData>Character: {el.character}</CastData>
             </div>
-          </li>
+          </CastBlock>
         ))}
       </ul>
     </>
