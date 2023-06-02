@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react';
 import SearchForm from 'components/SearchForm/SearchForm';
 import { fetchMovieByTitle } from 'components/services/fetch';
 import MoviesList from 'components/MoviesList/MoviesList';
+// import { useMemo } from 'react';
 
 const MoviesPage = () => {
   const [searchValue, setSearchValue] = useState('');
   const [moviesList, setMoviesList] = useState([]);
   //   () => JSON.parse(localStorage.getItem('list')) ?? []
   // );
+  // const savedList = useMemo(()=> moviesList, [moviesList])
 
   useEffect(() => {
     async function fetch() {

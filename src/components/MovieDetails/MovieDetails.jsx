@@ -13,7 +13,8 @@ const MovieDetails = ({ details }) => {
   const score = Math.round(Number(vote_average) * 10);
   return (
     <><MovieInfo>
-      <Poster src={poster_path ? posterImg : defaultImg} alt={title} />
+     
+      <Poster  src={poster_path ? posterImg : defaultImg} alt={title} />
       <div>
         <h3>
           {title} ({year})

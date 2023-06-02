@@ -1,19 +1,22 @@
 import { useLocation, useParams, Link } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import MovieDetails from 'components/MovieDetails/MovieDetails';
+import Loader from 'components/Loader/Loader';
 import { fetchMovieDetails } from 'components/services/fetch';
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
-
+  const [details, setDetails] = useState('');
+  const [loading, setLoading] = useState(false);
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/movies');
 
-  const [details, setDetails] = useState('');
+  
 
   useEffect(() => {
     async function fetch() {
       try {
+        setLoading(true);
         const results = await fetchMovieDetails(Number(movieId));
         const {
           title,
@@ -35,6 +38,8 @@ const MovieDetailsPage = () => {
         setDetails(filteredResults);
       } catch (err) {
         console.log(err);
+      } finally{
+        setLoading(false);
       }
     }
 
@@ -44,6 +49,7 @@ const MovieDetailsPage = () => {
   return (
     <>
       <Link to={backLinkLocationRef.current}>&#8678;Go back</Link>
+      {loading && <Loader />}
       <MovieDetails details={details} />
     </>
   );
