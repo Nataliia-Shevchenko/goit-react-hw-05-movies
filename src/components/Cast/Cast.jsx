@@ -32,21 +32,26 @@ const Cast = () => {
   return (
     <>
       <ul>
-        {cast?.map(el => (
-          <CastBlock key={el.id}>
-            <div>
-              <CastImg src={
-                  el.profile_path
-                    ? `https://image.tmdb.org/t/p/w200/${el.profile_path}`
-                    : defaultImg
-                }
-                alt={el.name}
-              />
-              <CastData>{el.name}</CastData>
-              <CastData>Character: {el.character}</CastData>
-            </div>
-          </CastBlock>
-        ))}
+        {cast.length === 0 ? (
+          <p>We don't have any info for this movie.</p>
+        ) : (
+          cast.map(el => (
+            <CastBlock key={el.id}>
+              <div>
+                <CastImg
+                  src={
+                    el.profile_path
+                      ? `https://image.tmdb.org/t/p/w200/${el.profile_path}`
+                      : defaultImg
+                  }
+                  alt={el.name}
+                />
+                <CastData>{el.name}</CastData>
+                <CastData>Character: {el.character}</CastData>
+              </div>
+            </CastBlock>
+          ))
+        )}
       </ul>
     </>
   );

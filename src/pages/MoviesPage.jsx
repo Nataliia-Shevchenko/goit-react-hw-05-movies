@@ -7,9 +7,7 @@ import MoviesList from 'components/MoviesList/MoviesList';
 const MoviesPage = () => {
   const [searchValue, setSearchValue] = useState('');
   const [moviesList, setMoviesList] = useState([]);
-  //   () => JSON.parse(localStorage.getItem('list')) ?? []
-  // );
-  // const savedList = useMemo(()=> moviesList, [moviesList])
+
 
   useEffect(() => {
     async function fetch() {
@@ -23,7 +21,7 @@ const MoviesPage = () => {
           return { title, id };
         });
         setMoviesList(filteredResults);
-        // localStorage.setItem('list', JSON.stringify(moviesList));
+     
       } catch (err) {
         console.log(err);
       }
@@ -34,6 +32,8 @@ const MoviesPage = () => {
   const handleSubmit = query => {
     setSearchValue(query);
   };
+
+  // const 
 
   return (
     <>

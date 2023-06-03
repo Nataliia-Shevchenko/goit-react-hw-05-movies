@@ -6,6 +6,7 @@ import {Header, Navig} from './Layout.styled'
 const Layout = () => {
   const StyledLink = styled(NavLink)`
   text-decoration: none;
+  color: black;
   &.active {
     color: #1709d3;
   }

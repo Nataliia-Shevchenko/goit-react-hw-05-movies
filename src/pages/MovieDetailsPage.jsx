@@ -1,8 +1,9 @@
-import { useLocation, useParams, Link } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { useState, useEffect, useRef } from 'react';
 import MovieDetails from 'components/MovieDetails/MovieDetails';
 import Loader from 'components/Loader/Loader';
 import { fetchMovieDetails } from 'components/services/fetch';
+import { BackLink } from 'components/BackLink';
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
@@ -12,7 +13,6 @@ const MovieDetailsPage = () => {
   const backLinkLocationRef = useRef(location.state?.from ?? '/movies');
 
   
-
   useEffect(() => {
     async function fetch() {
       try {
@@ -48,7 +48,7 @@ const MovieDetailsPage = () => {
 
   return (
     <>
-      <Link to={backLinkLocationRef.current}>&#8678;Go back</Link>
+      <BackLink to={backLinkLocationRef.current}>Go back</BackLink>
       {loading && <Loader />}
       <MovieDetails details={details} />
     </>
