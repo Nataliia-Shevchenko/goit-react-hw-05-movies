@@ -1,17 +1,17 @@
 import { Suspense } from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import styled from '@emotion/styled';
-import {Header, Navig} from './Layout.styled'
+import { Header, Navig } from './Layout.styled';
 
 const Layout = () => {
   const StyledLink = styled(NavLink)`
-  text-decoration: none;
-  color: black;
-  &.active {
-    color: #1709d3;
-  }
-`;
-  
+    text-decoration: none;
+    color: black;
+    &.active {
+      color: #1709d3;
+    }
+  `;
+
   return (
     <>
       <Header>
@@ -20,11 +20,9 @@ const Layout = () => {
           <StyledLink to="/movies">Movies</StyledLink>
         </Navig>
       </Header>
-      <main>
-        <Suspense fallback={<div>Loading...</div>} >
-          <Outlet />
-        </Suspense>
-      </main>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Outlet />
+      </Suspense>
     </>
   );
 };
