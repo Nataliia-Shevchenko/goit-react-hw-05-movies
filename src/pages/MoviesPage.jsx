@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import SearchForm from 'components/SearchForm/SearchForm';
-import { fetchMovieByTitle } from 'components/services/fetch';
+import { fetchMovieByTitle } from 'services/fetch';
 import MoviesList from 'components/MoviesList/MoviesList';
 // import { useMemo } from 'react';
 

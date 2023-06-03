@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchTrendMovies } from 'components/services/fetch';
+import { fetchTrendMovies } from 'services/fetch';
 import { Link, useLocation } from 'react-router-dom';
 
 const HomePage = () => {

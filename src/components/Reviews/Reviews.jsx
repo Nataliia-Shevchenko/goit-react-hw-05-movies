@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchReviews } from 'components/services/fetch';
+import { fetchReviews } from 'services/fetch';
 import { Review } from './Reviews.styled';
 
 const Reviews = () => {

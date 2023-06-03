@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchCast } from 'components/services/fetch';
+import { fetchCast } from 'services/fetch';
 import { CastBlock, CastImg, CastData } from './Cast.styled';
 
 const Cast = () => {
