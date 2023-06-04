@@ -5,7 +5,7 @@ import { fetchMovieByTitle } from 'services/fetch';
 import MoviesList from 'components/MoviesList/MoviesList';
 
 const MoviesPage = () => {
-  // const [searchValue, setSearchValue] = useState('');
+
   const [moviesList, setMoviesList] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') ?? '';
@@ -31,29 +31,19 @@ const MoviesPage = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // if (query.trim() === '') {
-    //   window.alert('Fill the search form!');
-    //   return;
-    // }
-  
     const form = e.currentTarget;
+    if (form.elements.name.value.trim() === '') {
+      window.alert('Fill the search form!');
+      return;
+    }
     setSearchParams({ query: form.elements.name.value });
     form.reset();
   };
-
-  // const updateQueryString = e => {
-  //   if (e.target.value === '') {
-  //     return setSearchParams({});
-  //   }
-  //   setSearchParams({ query: e.target.value });
-  // };
 
   return (
     <>
       <SearchForm
         onSubmit={handleSubmit}
-        // query={query}
-        // onChange={updateQueryString}
       />
       {moviesList && <MoviesList list={moviesList} />}
     </>
