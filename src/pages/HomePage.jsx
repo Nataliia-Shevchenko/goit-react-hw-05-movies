@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { fetchTrendMovies } from 'services/fetch';
-import { Link, useLocation } from 'react-router-dom';
+// import {useLocation } from 'react-router-dom';
+import MoviesList from '../components/MoviesList/MoviesList'
 
 const HomePage = () => {
   const [trends, setTrends] = useState([]);
-  const location = useLocation();
+  // const location = useLocation();
 
 
   useEffect(() => {
@@ -29,13 +30,14 @@ const HomePage = () => {
     <div>
       <h2>Trending Today</h2>
       <ul>
-        {trends?.map(el => (
+        {/* {trends?.map(el => (
           <li key={el.id} >
             <Link to={`/movies/${el.id}`} state={{ from: location }}>
               {el.title}
             </Link>
           </li>
-        ))}
+        ))} */}
+        <MoviesList list={trends} />
       </ul>
     </div>
   );
